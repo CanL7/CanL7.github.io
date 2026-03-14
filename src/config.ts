@@ -308,7 +308,7 @@ export const navBarConfig: NavBarConfig = {
 					url: "https://github.com/CanL7",
 					external: true,
 					icon: "fa7-brands:github",
-				},x
+				},
 				{
 					name: "Bilibili",
 					url: "https://space.bilibili.com/7506886354",
