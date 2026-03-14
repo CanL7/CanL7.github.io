@@ -119,16 +119,38 @@ export const siteConfig: SiteConfig = {
 		// 支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播
 		src: {
 			desktop: [
-                "/images/sagiri/5.jpg",
-				"/images/sagiri/9.jpg",
-				"/images/sagiri/11.jpg",
-				"/images/sagiri/15.jpg",
+                "/images/sagiri/1.png",
+                            "/images/sagiri/2.jpg",
+                            "/images/sagiri/3.jpg",
+                            "/images/sagiri/4.png",
+                			"/images/sagiri/5.jpg",
+                			"/images/sagiri/6.jpg",
+                			"/images/sagiri/7.png",
+                			"/images/sagiri/8.png",
+                            "/images/sagiri/9.jpg",
+                            "/images/sagiri/10.jpg",
+                            "/images/sagiri/11.png",
+                            "/images/sagiri/12.png",
+                            "/images/sagiri/13.png",
+                            "/images/sagiri/14.png",
+                            "/images/sagiri/15.png",
 			], // 桌面横幅图片
 			mobile: [
-				"/images/sagiri/5.jpg",
-                "/images/sagiri/9.jpg",
-                "/images/sagiri/11.jpg",
-                "/images/sagiri/15.jpg",
+				"/images/sagiri/1.png",
+                            "/images/sagiri/2.jpg",
+                            "/images/sagiri/3.jpg",
+                            "/images/sagiri/4.png",
+                			"/images/sagiri/5.jpg",
+                			"/images/sagiri/6.jpg",
+                			"/images/sagiri/7.png",
+                			"/images/sagiri/8.png",
+                            "/images/sagiri/9.jpg",
+                            "/images/sagiri/10.jpg",
+                            "/images/sagiri/11.png",
+                            "/images/sagiri/12.png",
+                            "/images/sagiri/13.png",
+                            "/images/sagiri/14.png",
+                            "/images/sagiri/15.png",
 			], // 移动横幅图片
 		}, // 使用本地横幅图片
 
@@ -227,16 +249,38 @@ export const siteConfig: SiteConfig = {
 export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
 	src: {
 		desktop: [
+            "/images/sagiri/1.png",
+            "/images/sagiri/2.jpg",
+            "/images/sagiri/3.jpg",
+            "/images/sagiri/4.png",
 			"/images/sagiri/5.jpg",
+			"/images/sagiri/6.jpg",
+			"/images/sagiri/7.png",
+			"/images/sagiri/8.png",
             "/images/sagiri/9.jpg",
-            "/images/sagiri/11.jpg",
-            "/images/sagiri/15.jpg",
+            "/images/sagiri/10.jpg",
+            "/images/sagiri/11.png",
+            "/images/sagiri/12.png",
+            "/images/sagiri/13.png",
+            "/images/sagiri/14.png",
+            "/images/sagiri/15.png",
 		], // 桌面横幅图片
 		mobile: [
-			"/images/sagiri/5.jpg",
-            "/images/sagiri/9.jpg",
-            "/images/sagiri/11.jpg",
-            "/images/sagiri/15.jpg",
+			"/images/sagiri/1.png",
+                        "/images/sagiri/2.jpg",
+                        "/images/sagiri/3.jpg",
+                        "/images/sagiri/4.png",
+            			"/images/sagiri/5.jpg",
+            			"/images/sagiri/6.jpg",
+            			"/images/sagiri/7.png",
+            			"/images/sagiri/8.png",
+                        "/images/sagiri/9.jpg",
+                        "/images/sagiri/10.jpg",
+                        "/images/sagiri/11.png",
+                        "/images/sagiri/12.png",
+                        "/images/sagiri/13.png",
+                        "/images/sagiri/14.png",
+                        "/images/sagiri/15.png",
 		], // 移动横幅图片
 	}, // 使用本地横幅图片
 	position: "center", // 壁纸位置，等同于 object-position
