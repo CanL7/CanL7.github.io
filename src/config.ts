@@ -125,10 +125,10 @@ export const siteConfig: SiteConfig = {
 				"/images/sagiri/15.jpg",
 			], // 桌面横幅图片
 			mobile: [
-				"/public/images/sagiri/5.jpg",
-                "/public/images/sagiri/9.jpg",
-                "/public/images/sagiri/11.jpg",
-                "/public/images/sagiri/15.jpg",
+				"/images/sagiri/5.jpg",
+                "/images/sagiri/9.jpg",
+                "/images/sagiri/11.jpg",
+                "/images/sagiri/15.jpg",
 			], // 移动横幅图片
 		}, // 使用本地横幅图片
 
@@ -213,7 +213,7 @@ export const siteConfig: SiteConfig = {
 			fontWeight: "400",
 			localFonts: ["ZenMaruGothic-Medium.ttf"],
 			enableCompress: true, // 启用字体子集优化，减少字体文件大小
-		},
+		},x
 		cjkFont: {
 			// 中日韩字体 - 作为回退字体
 			fontFamily: "萝莉体 第二版",
@@ -264,7 +264,7 @@ export const navBarConfig: NavBarConfig = {
 					url: "https://github.com/CanL7",
 					external: true,
 					icon: "fa7-brands:github",
-				},
+				},x
 				{
 					name: "Bilibili",
 					url: "https://space.bilibili.com/7506886354",
