@@ -55,9 +55,9 @@ export const siteConfig: SiteConfig = {
 		// 顶栏标题文本
 		text: "CanL",
 		// 顶栏标题图标路径，默认使用 public/assets/home/home.png
-		icon: "assets/home/home.png",
+		icon: "/assets/home/Photo1.png",
 		// 网站Logo图片路径
-		logo: "assets/home/default-logo.png",
+		logo: "/assets/home/myBlogLogo.png",
 	},
 
 	// 页面自动缩放配置
@@ -667,7 +667,7 @@ export const pioConfig: import("./types/config").PioConfig = {
 			"HENTAI!",
 			"Don't bully me like that!",
 		], // 触摸提示
-		home: "Click here to go back to homepage!", // 首页提示
+		home: "点击回到首页!", // 首页提示
 		skin: ["Want to see my new outfit?", "The new outfit looks great~"], // 换装提示
 		close: "QWQ See you next time~", // 关闭提示
 		link: "https://www.canl-blog.top/", // 关于链接
