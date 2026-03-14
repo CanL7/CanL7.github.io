@@ -38,14 +38,14 @@ export const siteConfig: SiteConfig = {
 
 	// 特色页面开关配置（关闭未使用的页面有助于提升 SEO，关闭后请记得在 navbarConfig 中移除对应链接）
 	featurePages: {
-		anime: false, // 番剧页面开关
+		    anime: false, // 番剧页面开关
 		diary: true, // 日记页面开关
 		friends: true, // 友链页面开关
-		projects: true, // 项目页面开关
-		skills: true, // 技能页面开关
+		    projects: false, // 项目页面开关
+		    skills: false, // 技能页面开关
 		timeline: true, // 时间线页面开关
-		albums: true, // 相册页面开关
-		devices: true, // 设备页面开关
+		    albums: false, // 相册页面开关
+		    devices: false, // 设备页面开关
 	},
 
 	// 顶栏标题配置
@@ -311,7 +311,7 @@ export const navBarConfig: NavBarConfig = {
 				},
 				{
 					name: "Bilibili",
-					url: "https://space.bilibili.com/7506886354",
+					url: "https://space.bilibili.com/506886354",
 					external: true,
 					icon: "fa7-brands:bilibili",
 				},
@@ -338,17 +338,17 @@ export const navBarConfig: NavBarConfig = {
 					url: "/diary/",
 					icon: "material-symbols:book",
 				},
-				{
-					name: "Gallery",
-					url: "/albums/",
-					icon: "material-symbols:photo-library",
-				},
-				{
-					name: "Devices",
-					url: "devices/",
-					icon: "material-symbols:devices",
-					external: false,
-				},
+// 				{
+// 					name: "Gallery",
+// 					url: "/albums/",
+// 					icon: "material-symbols:photo-library",
+// 				},
+// 				{
+// 					name: "Devices",
+// 					url: "devices/",
+// 					icon: "material-symbols:devices",
+// 					external: false,
+// 				},
 			],
 		},
 		{
@@ -373,16 +373,16 @@ export const navBarConfig: NavBarConfig = {
 			url: "#",
 			icon: "material-symbols:more-horiz",
 			children: [
-				{
-					name: "Projects",
-					url: "/projects/",
-					icon: "material-symbols:work",
-				},
-				{
-					name: "Skills",
-					url: "/skills/",
-					icon: "material-symbols:psychology",
-				},
+// 				{
+// 					name: "Projects",
+// 					url: "/projects/",
+// 					icon: "material-symbols:work",
+// 				},
+// 				{
+// 					name: "Skills",
+// 					url: "/skills/",
+// 					icon: "material-symbols:psychology",
+// 				},
 				{
 					name: "Timeline",
 					url: "/timeline/",
@@ -394,7 +394,7 @@ export const navBarConfig: NavBarConfig = {
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/images/avatar.webp", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
+	avatar: "/images/sagiri/Photo1.png", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
 	name: "CanL",
 	bio: "向各位大佬靠近中",
 	typewriter: {
@@ -405,7 +405,7 @@ export const profileConfig: ProfileConfig = {
 		{
 			name: "Bilibili",
 			icon: "fa7-brands:bilibili",
-			url: "https://space.bilibili.com/7506886354",
+			url: "https://space.bilibili.com/506886354",
 		},
 // 		{
 // 			name: "Gitee",
@@ -483,12 +483,12 @@ export const shareConfig: ShareConfig = {
 };
 
 export const announcementConfig: AnnouncementConfig = {
-	title: "你好！", // 公告标题，填空使用i18n字符串Key.announcement
-	content: "这里没有东西(", // 公告内容
+	title: "网站公告", // 公告标题，填空使用i18n字符串Key.announcement
+	content: "欢迎访问我的博客！这里会分享技术文章和生活感悟。", // 公告内容
 	closable: true, // 允许用户关闭公告
 	link: {
-		enable: true, // 启用链接
-		text: "Learn More", // 链接文本
+		enable: false, // 启用链接
+		text: "关于我", // 链接文本
 		url: "/about/", // 链接 URL
 		external: false, // 内部链接
 	},
