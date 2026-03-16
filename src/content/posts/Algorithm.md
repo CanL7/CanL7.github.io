@@ -8,11 +8,11 @@ category: 'Algorithm'
 draft: false 
 lang: ''
 ---
-##### 二分
+### 二分算法
 **第一题**
-**[链接文本](https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/description/ )**
+**[34. 在排序数组中查找元素的第一个和最后一个位置](https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/description/ )**
 
-```
+```java
 class Solution {
     public int[] searchRange(int[] nums, int target) {
         int left = -1;
