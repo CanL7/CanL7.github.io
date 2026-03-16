@@ -244,7 +244,7 @@ export const siteConfig: SiteConfig = {
 			enableCompress: true, // 启用字体子集优化，减少字体文件大小
 		},
 	},
-	showLastModified: true, // 控制“上次编辑”卡片显示的开关
+	showLastModified: false, // 控制“上次编辑”卡片显示的开关
 };
 export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
 	src: {
@@ -368,28 +368,28 @@ export const navBarConfig: NavBarConfig = {
 				},
 			],
 		},
-		{
-			name: "Others",
-			url: "#",
-			icon: "material-symbols:more-horiz",
-			children: [
+// 		{
+// 			name: "Others",
+// 			url: "#",
+// 			icon: "material-symbols:more-horiz",
+// 			children: [
+// // 				{
+// // 					name: "Projects",
+// // 					url: "/projects/",
+// // 					icon: "material-symbols:work",
+// // 				},
+// // 				{
+// // 					name: "Skills",
+// // 					url: "/skills/",
+// // 					icon: "material-symbols:psychology",
+// // 				},
 // 				{
-// 					name: "Projects",
-// 					url: "/projects/",
-// 					icon: "material-symbols:work",
+// 					name: "Timeline",
+// 					url: "/timeline/",
+// 					icon: "material-symbols:timeline",
 // 				},
-// 				{
-// 					name: "Skills",
-// 					url: "/skills/",
-// 					icon: "material-symbols:psychology",
-// 				},
-				{
-					name: "Timeline",
-					url: "/timeline/",
-					icon: "material-symbols:timeline",
-				},
-			],
-		},
+//			],
+//		},
 	],
 };
 
