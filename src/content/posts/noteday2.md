@@ -2,7 +2,7 @@
 title: noteday2
 published: 2026-03-16
 description: '一些简单算法'
-image: '/images/sagiri/2.png'
+image: '/images/sagiri/2.jpg'
 tags: [java]
 category: 'Note'
 draft: false 
