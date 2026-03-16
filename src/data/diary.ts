@@ -20,6 +20,13 @@ const diaryData: DiaryItem[] = [
 		date: "2026-03-12",
 		images: ["/images/diary/sakura.jpg", "/images/diary/1.jpg"],
 	},
+{
+		id: 2,
+		content:
+			"学着其实并不累 希望自己不要放弃呀！多往图书馆去 寝室学不了！",
+		date: "2026-03-17",
+		images: [""],
+	},
 ];
 
 // 获取日记统计数据
