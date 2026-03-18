@@ -223,3 +223,11 @@ public class HashMapTest2 {
 > 2. 使用 `HashMap` 进行统计（键是统计对象，值是计数）
 > 3. 利用 `entrySet` 遍历 `HashMap`，同时获取键和值
 > 4. 分步处理问题：先统计，再计算最大值，最后找出结果
+
+TreeMap
+
+1.特点不重复、无索引、可排序，底层基于红黑树实现排序，增删改查性能较好
+
+2.TreeMap集合排序的两种方式（与TreeSet一样）
+     2.1实现Comparable接口，指定比较规则
+     2.2创建集合时传递Comparator比较器对象，指定比较规则
