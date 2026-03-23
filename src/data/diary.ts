@@ -12,20 +12,26 @@ export interface DiaryItem {
 }
 
 // 示例日记数据
-// const diaryData: DiaryItem[] = [
-// 	{
-// 		id: 1,
-// 		content:
-// 			"终于搭好了一个好看的博客！ 加油学习吧",
-// 		date: "2026-03-12",
-// 	},
-// {
-// 		id: 2,
-// 		content:
-// 			"学着其实并不累 希望自己不要放弃呀！多往图书馆去 寝室学不了！ ",
-// 		date: "2026-03-17",
-// 	},
-// ];
+const diaryData: DiaryItem[] = [
+	{
+		id: 1,
+		content:
+			"终于搭好了一个好看的博客！ 加油学习吧",
+		date: "2026-03-12",
+	},
+{
+		id: 2,
+		content:
+			"学着其实并不累 希望自己不要放弃呀！多往图书馆去 寝室学不了！ ",
+		date: "2026-03-17",
+	},
+{
+		id: 3,
+		content:
+			"学完JavaSE纪念！ 也是轻而易举啊 hhh(其实并非 ",
+		date: "2026-03-24T00:00:00",
+	},
+];
 
 // 获取日记统计数据
 export const getDiaryStats = () => {
