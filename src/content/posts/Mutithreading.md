@@ -136,7 +136,7 @@ LinkedBlockingQueue
 
 ## 5.线程的6大状态
 
-![1591163781941](/images/postimage/3.png)
+![1591163781941](/images/postimage/Mutithreading/1.png)
 
 > 红色为自填加 方便理解 实际过程中会交给操作系统进行处理
 
@@ -174,7 +174,7 @@ LinkedBlockingQueue
 
 #### 参数详解
 
-![1591165506516](/images/postimage/4.png)
+![1591165506516](/images/postimage/Mutithreading/2.png)
 
 ```java
 

@@ -44,11 +44,11 @@ lang: ''
 
     **2.1 红黑规则** 
 
-![1](/images/postimage/1.png)
+![1](/images/postimage/Noteday4imgs/1.png)
 
     **2.2 添加节点的操作**
 
-![2](/images/postimage/2.png)
+![2](/images/postimage/Noteday4imgs/2.png)
 
 **红黑树增删改查的性能都很好**
 
