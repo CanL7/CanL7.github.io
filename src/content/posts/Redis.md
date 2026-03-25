@@ -41,23 +41,23 @@ Redis是一种键值型的NoSql数据库，这里有两个关键字：
 
 传统关系型数据库是结构化数据，每一张表都有严格的约束信息：字段名、字段数据类型、字段约束等等信息，插入的数据必须遵守这些约束：
 
-![](../../../public/images/postimage/Redis/4tUgFo6.png)
+![](/images/postimage/Redis/4tUgFo6.png)
 
 而NoSql则对数据库格式没有严格约束，往往形式松散，自由。
 
 可以是键值型：
 
-![](../../../public/images/postimage/Redis/GdqOSsj.png)
+![](/images/postimage/Redis/GdqOSsj.png)
 
 也可以是文档型：
 
-![](../../../public/images/postimage/Redis/zBBQfcc.png)
+![](/public/images/postimage/Redis/zBBQfcc.png)
 
 
 
 甚至可以是图格式：
 
-![](../../../public/images/postimage/Redis/zBnKxWf.png)
+![](/public/images/postimage/Redis/zBnKxWf.png)
 
 
 
@@ -65,7 +65,7 @@ Redis是一种键值型的NoSql数据库，这里有两个关键字：
 
 传统数据库的表与表之间往往存在关联，例如外键：
 
-![](../../../public/images/postimage/Redis/tXYSl5x.png)
+![](/public/images/postimage/Redis/tXYSl5x.png)
 
 
 
@@ -102,7 +102,7 @@ Redis是一种键值型的NoSql数据库，这里有两个关键字：
 
 而不同的非关系数据库查询语法差异极大，五花八门各种各样。
 
-![](../../../public/images/postimage/Redis/AzaHOTF.png)
+![](/public/images/postimage/Redis/AzaHOTF.png)
 
 
 
@@ -118,7 +118,7 @@ Redis是一种键值型的NoSql数据库，这里有两个关键字：
 
 除了上述四点以外，在存储方式、扩展性、查询性能上关系型与非关系型也都有着显著差异，总结如下：
 
-![](../../../public/images/postimage/Redis/kZP40dQ.png)
+![](/public/images/postimage/Redis/kZP40dQ.png)
 
 - 存储方式
   
@@ -153,7 +153,7 @@ Redis的官方网站地址：https://redis.io/
 
 Redis是典型的key-value数据库，key一般是字符串，而value包含很多不同的数据类型：
 
-![](../../../public/images/postimage/Redis/8tli2o9.png)
+![](/public/images/postimage/Redis/8tli2o9.png)
 
 
 
@@ -264,13 +264,13 @@ Hash类型，也叫散列，其value是一个无序字典，类似于Java中的H
 
 String结构是将对象序列化为JSON字符串后存储，当需要修改对象某个字段时很不方便：
 
-![](../../../public/images/postimage/Redis/x2zDBjf.png)
+![](/public/images/postimage/Redis/x2zDBjf.png)
 
 
 
 Hash结构可以将对象中的每个字段独立存储，可以针对单个字段做CRUD：
 
-![](../../../public/images/postimage/Redis/VF2EPt0.png)
+![](/public/images/postimage/Redis/VF2EPt0.png)
 
 Hash的常见命令有：
 
