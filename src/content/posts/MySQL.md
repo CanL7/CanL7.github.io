@@ -23,7 +23,7 @@ lang: ''
 
 ## 2.1 SQL分类
 
-![4d0f9c210953713bbce201115fb7c645](C:\Users\Sagiri\mizuki\public\images\postimage\MySQL\4d0f9c210953713bbce201115fb7c645.png)
+![4d0f9c210953713bbce201115fb7c645](/images/postimage/MySQL/4d0f9c210953713bbce201115fb7c645.png)
 
 
 
@@ -99,11 +99,11 @@ CREATE TABLE 表名(
 
 ### 2.2.3 表操作-数据类型
 
-![d4336a25a5e62ba06d723a4bd85998be](C:\Users\Sagiri\mizuki\public\images\postimage\MySQL\d4336a25a5e62ba06d723a4bd85998be.png)
+![d4336a25a5e62ba06d723a4bd85998be](/images/postimage/MySQL/d4336a25a5e62ba06d723a4bd85998be.png)
 
 * `char`与 `varchar`都可以描述字符串，char是定长字符串，指定长度多长，就占用多少个字符，和字段值的长度无关 。而varchar是变长字符串，指定的长度为最大占用长度 。相对来说， char的性能会更高些（因为varchar会计算存储内容所占空间）。
 
-![6bf8c519641f354f2a59c4d8b0fd7dc8](C:\Users\Sagiri\mizuki\public\images\postimage\MySQL\6bf8c519641f354f2a59c4d8b0fd7dc8.png)
+![6bf8c519641f354f2a59c4d8b0fd7dc8](/images/postimage/MySQL/6bf8c519641f354f2a59c4d8b0fd7dc8.png)
 
 ### 2.2.4 表操作-修改(alter)
 
@@ -310,7 +310,7 @@ from score;
 
 目的：保证数据库中数据的正确、有效性和完整性。
 
-![525fbbec92a76f600ebf035c39fdabf6](C:\Users\Sagiri\mizuki\public\images\postimage\MySQL\525fbbec92a76f600ebf035c39fdabf6.png)
+![525fbbec92a76f600ebf035c39fdabf6](/images/postimage/MySQL/525fbbec92a76f600ebf035c39fdabf6.png)
 
 :::tip
 
@@ -362,7 +362,8 @@ alter table emp add constraint fk_emp_dept_id foreign key (dept_id) references d
 alter table emp drop foreign key fk_emp_dept_id;
 ```
 
-#### 删除/更新行为                                      ![e27e42a76150bc796ede93997f74a9ca](C:\Users\Sagiri\mizuki\public\images\postimage\MySQL\e27e42a76150bc796ede93997f74a9ca.png)
+#### 删除/更新行为                                      
+![e27e42a76150bc796ede93997f74a9ca](/images/postimage/MySQL/e27e42a76150bc796ede93997f74a9ca.png)
 
 - 语法：
 
