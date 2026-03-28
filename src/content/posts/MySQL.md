@@ -1,7 +1,7 @@
 ---
 title: MySQL
-published: 2026-03-26
-description: '未学完 持续更新中'
+published: 2026-03-29
+description: 'MySQL'
 image: '/images/sagiri/11.png'
 tags: [java,MySQL]
 category: 'java'
@@ -257,7 +257,7 @@ DCL英文全称是**Data Control Language** (数据控制语言)，用来**管�
 
 
 
-## 2.6 函数
+# 3. 函数
 
 比较简单 我们快速跳过
 
@@ -304,7 +304,7 @@ name,
 from score;
 ```
 
-## 2.7 约束
+# 4. 约束
 
 概念：约束是作用于表中字段上的规则，用于限制存储在表中的数据。
 
@@ -362,7 +362,8 @@ alter table emp add constraint fk_emp_dept_id foreign key (dept_id) references d
 alter table emp drop foreign key fk_emp_dept_id;
 ```
 
-#### 删除/更新行为                                      
+#### 删除/更新行为                                     
+
 ![e27e42a76150bc796ede93997f74a9ca](/images/postimage/MySQL/e27e42a76150bc796ede93997f74a9ca.png)
 
 - 语法：
@@ -386,9 +387,9 @@ alter table emp add constraint fk_emp_dept_id foreign key (dept_id)
 
 在datagrip中可以用图形化界面修改
 
-## 2.8 多表查询
+# 5. 多表查询
 
-### 2.8.1 多表关系
+### 5.1 多表关系
 
 项目开发 中，在进行数据库表结构设计时，会根据业务需求及业务模块之间的关系，分析并设计表结构，由于业务之间相互关联，所以各个表结构之间也存在着各种联系，基本上分为三种：
 
@@ -398,7 +399,7 @@ alter table emp add constraint fk_emp_dept_id foreign key (dept_id)
 
 - 一对一
 
-#### 1.一对多
+#### 5.1.1一对多
 
 * 案例 : 部门与员工的关系
   
@@ -406,7 +407,7 @@ alter table emp add constraint fk_emp_dept_id foreign key (dept_id)
   
   * 实现 : 在多的一方建立外键，指向一的一方的主键。
 
-#### 2.多对多
+#### 5.1.2多对多
 
 * 案例 : 学生与课程的关系
   
@@ -441,7 +442,7 @@ create table student_course (
 insert into student_course values (null,1,1), (null,1,2), (null,1,3), (null,2,2),(null,2,3), (null,3,4);
 ```
 
-#### 3.一对一
+#### 5.1.3一对一
 
 * 案例 : 用户 与 用户详情的关系
   
@@ -480,3 +481,366 @@ insert into tb_user_edu (id, degree, major, primaryschool, middleschool,universi
                    (null, '本科 ', '英语 ', '杭州市第一小学 ', '杭州市第一中学 ', '杭州师范大学 ',3),
                    (null, '本科 ', '应用数学 ', '阳泉第一小学 ', '阳泉区第一中学 ', '清华大学 ',4);
 ```
+
+### 5.2 分类
+
+连接查询
+
+**内连接**：相当于查询A、B**交集**部分数据。内连接查询的是两张表交集部分的数据。
+
+**外连接**：
+
+- 左外连接：查询左表**所有**数据，以及两张表交集部分数据
+
+- 右外连接：查询右表**所有**数据，以及两张表交集部分数据 
+
+> 需要所有数据时用
+
+**自连接**：当前表与自身的连接查询，自连接必须使用表别名
+
+
+
+### 5.2.1 内连接
+
+###### 1.隐式内连接
+
+用where的
+
+```sql
+ SELECT 字段列表 FROM 表1 , 表2 WHERE 条件 ... ;
+```
+
+###### 2.显式内连接
+
+用join on的 
+
+```sql
+SELECT 字段列表 FROM 表1 [ INNER ] JOIN 表2 ON 连接条件 ... ;
+```
+
+:::tip
+
+起别名注意事项：一旦为表起了别名，就不能再使用表名来指定对应的字段了，此时只能够使用别名来指定字段。
+
+:::
+
+```sql
+# 多表查询
+-- 内连接
+-- 查询每一个员工的姓名  , 及关联的部门的名称   (隐式内连接实现)
+select emp.name, dept.name from emp, dept where emp.dept_id = dept.id;
+
+-- 为每一张表起别名,简化SQL编写
+select e.name,d.name from emp e , dept d where e.dept_id = d.id;
+
+
+-- 查询每一个员工的姓名   , 及关联的部门的名称   (显式内连接实现)  
+--- INNER JOIN ... ON ...
+select emp.name, dept.name from emp inner join dept on emp.dept_id = dept.id;
+```
+
+### 5.2.2 外连接
+
+分为左,右连接 因为左右可以互换 我们一般采用左连接
+
+```sql
+# 多表查询
+-- 外连接
+-- 查询emp表的所有数据 , 和对应的部门信息（左外连接）
+select emp.*, dept.name from emp left join dept on emp.dept_id = dept.id;
+
+
+-- 查询dept表的所有数据 , 和对应的员工信息(右外连接)
+select dept.*, emp.*  from emp right join dept on emp.dept_id = dept.id;
+
+select d.*, e.* from dept d left outer join emp e on e.dept_id = d.id; 
+-- 左右调换
+```
+
+### 5.2.3 自连接
+
+自连接查询，顾名思义，就是自己连接自己，也就是把一张表连接查询多次。
+
+* **对于自连接查询，可以是内连接查询，也可以是外连接查询。**
+
+* 在自连接查询中，必须要为表起**别名**，要不然我们不清楚所指定的条件、返回的字段，到底 是哪一张表的字段。
+
+###### 1.自连接查询
+
+```sql
+-- 自连接
+-- 查询员工及其所属领导的名字
+select a.name , b.name from emp a join emp b on a.managerid = b.id;
+
+-- 查询所有员工  emp 及其领导的名字  emp , 如果员工没有领导 , 也需要查询出来 表结构 : emp a , emp b
+select A.name '员工', B.name '领导' from emp A left join emp B on A.managerid = B.id;
+```
+
+###### 2.联合查询
+
+union查询，就是把多次查询的结果合并起来，形成一个新的查询结果集。
+
+```sql
+-- 联合查询
+-- 将薪资低于  10000 的员工 , 和年龄大于 50 岁的员工全部查询出来。
+-- 当前对于这个需求，我们可以直接使用多条件查询，使用逻辑运算符o连接即可。那这里呢，我们
+-- 也可以通过union/union all来联合查询 .
+select * from emp where salary < 10000
+union all
+select * from emp where age > 50;
+/*
+select * from emp where salary < 10000
+union all
+select name from emp where age > 50;  --报错 字段数量不一致
+*/
+```
+
+* union all查询出来的结果，仅仅进行简单的合并，并**未去重**。
+
+* union 联合查询，会对查询出来的结果进行**去重**处理。
+  
+  
+
+### 5.3 子查询
+
+**分类**
+
+* 根据子查询结果不同，分为：
+  
+  * 标量子查询（子查询结果为单个值）
+  
+  * 列子查询(子查询结果为一列)
+  
+  * 行子查询(子查询结果为一行)
+  
+  * 表子查询(子查询结果为多行多列)
+
+###### 1.标量子查询
+
+也就是select查询的是单个值 可以直接嵌套
+
+来两个例子
+
+```sql
+-- 查询  "销售部 " 的所有员工信息
+-- 0.查询销售部id
+select id from dept where name = '市场部 ';
+-- 1.根据"销售部 " 部门ID, 查询员工信息
+select * from emp where dept_id = (select id from dept where name = '市场部 ');
+
+-- 查询在  "方东白 " 入职之后的员工信息
+-- 查询  方东白  的入职日期
+select entrydate from emp where name = '方东白 ';
+-- 查询指定入职日期之后入职的员工信息
+select * from emp where entrydate > (select entrydate from emp where name = '方东白');
+```
+
+###### 2.列子查询
+
+字面意思 返回的是一列数据
+
+操作符有: in , not in , all , any ,some(==any)
+
+```sql
+-- 列子查询
+-- 查询   "销售部 " 和  "市场部 " 的所有员工信息
+select id from dept where name = '销售部 ' or name = '市场部 ';
+select * from emp where dept_id in (select id from dept 
+where name = '销售部 ' or name = '市场部 ');
+
+-- 查询比财务部所有人工资都高的员工信息
+select id from dept where name = '财务部';
+
+select salary from emp where dept_id = (select id from dept where name = '财务部');
+
+select * from emp where salary > all (select salary from emp where dept_id = (select id from dept where name = '财务部'));
+
+-- 查询比研发部其中任意一人工资高的员工信息
+select * from emp where salary > any ( select salary from emp where dept_id = (select id from dept where name = '研发部 ') );
+```
+
+###### 3.行子查询
+
+```sql
+-- 查询与  "张无忌 " 的薪资及直属领导相同的员工信息   ;
+select salary, managerid from emp where name = '张无忌 ';
+select * from emp where (salary,managerid) = (select salary, managerid from emp where name = '张无忌 ');
+```
+
+###### 4.表子查询
+
+子查询返回的结果是多行多列，这种子查询称为表子查询
+
+常用**in**操作符
+
+```sql
+-- 查询与  "鹿杖客 " , "宋远桥 " 的职位和薪资相同的员工信息
+select job, salary from emp where name = '鹿杖客 ' or name = '宋远桥 ';
+select * from emp where (job,salary) in (select job, salary from emp where name = '鹿杖客 ' or name = '宋远桥 ');
+
+-- 查询入职日期是  "2006-01-01" 之后的员工信息   , 及其部门信息
+select * from emp where entrydate > '2006-01-01';
+select e.*, d.* from (select * from emp where entrydate > '2006-01-01 ') e left join dept d on e.dept_id = d.id ;
+```
+
+### 5.4 多表查询案例
+
+补充: 
+
+- 查重关键字 distinct
+
+- ......
+
+一共12个
+
+```sql
+# 多表查询案例
+create table salgrade (
+         grade int,
+         losal int,
+         hisal int
+) comment '薪资等级表 ';
+
+insert into salgrade values (1,0,3000);
+insert into salgrade values (2,3001,5000);
+insert into salgrade values (3,5001,8000);
+insert into salgrade values (4,8001,10000);
+insert into salgrade values (5,10001,15000);
+insert into salgrade values (6,15001,20000);
+insert into salgrade values (7,20001,25000);
+insert into salgrade values (8,25001,30000);
+
+-- 1). 查询员工的姓名、 年龄、职位、部门信息  （隐式内连接）
+select e.name, e.age, e.job, d.name from emp e, dept d where e.dept_id = d.id;
+
+-- 2). 查询年龄小于30岁的员工的姓名、年龄、职位、部门信息（显式内连接）
+select e.name, e.age, e.job, d.name frm emp e inner join dept d on e.dept_id = d.id where age < 30;
+
+-- 3). 查询拥有员工的部门ID、部门名称
+select distinct dept.id, dept.name from emp, dept where emp.dept_id = dept.id;
+
+-- 4). 查询所有年龄大于40岁的员工 , 及其归属的部门名称 ; 如果员工没有分配部门 , 也需要展示出来(外连接)
+select emp.*, dept.name from emp left join dept on emp.dept_id = dept.id where age > 40;
+
+-- 5). 查询所有员工的工资等级
+select e.* , s.grade , s.losal, s.hisal from emp e , salgrade s where e.salary >= s.losal and e.salary <= s.hisal;
+
+select e.* , s.grade , s.losal, s.hisal from emp e , salgrade s where e.salary between s.losal and s.hisal;
+
+-- 6). 查询  "研发部 " 所有员工的信息及  工资等级
+select e.* , s.grade from emp e , dept d , salgrade s where e.dept_id = d.id and ( e.salary between s.losal and s.hisal ) and d.name = '研发部 ';
+
+-- 7). 查询  "研发部 " 员工的平均工资
+select avg(e.salary) from emp e, dept d where e.dept_id = d.id and d.name = '研发部';
+
+-- 8). 查询工资比   "灭绝 " 高的员工信息。
+select salary from emp where name = '灭绝 ';
+select * from emp where salary > ( select salary from emp where name = '灭绝 ' );
+
+-- 9). 查询比平均薪资高的员工信息
+select avg(salary) from emp;
+select * from emp where salary > ( select avg (salary) from emp );
+
+-- 10). 查询低于本部门平均工资的员工信息
+select avg(e1.salary) from emp e1 where e1.dept_id = 1;
+select avg(e1.salary) from emp e1 where e1.dept_id = 2;
+
+select * from emp e2 where e2.salary < ( select avg(e1.salary) from emp e1 where e1.dept_id = e2.dept_id );
+
+-- 11). 查询所有的部门信息 , 并统计部门的员工人数
+select d.id, d.name , ( select count (*) from emp e where e.dept_id = d.id ) '人数 ' from dept d;
+
+-- 12). 查询所有学生的选课情况 , 展示出学生名称 , 学号 , 课程名称 
+select s.name , s.no , c.name from student s , student_course sc , course c where s.id = sc.studentid and sc.courseid = c.id ;# 多表查询案例
+
+```
+
+
+
+# 6.事务
+
+### 1.事务简介
+
+是一组操作的集合，它是一个不可分割的工作单位，事务会把所有的操作作为一个整体一起向系 统提交或撤销操作请求，即这些操作**要么同时成功，要么同时失败**。
+
+### 2.事务操作
+
+#### 2.1 第一种操作方式
+
+```sql
+--查看事务自动提交方式
+--1为打开自动提交
+SELECT @@autocommit ;
+--设置事务提交方式
+SET @@autocommit = 0 ;
+--提交
+COMMIT;
+--回滚事务
+ROLLBACK;
+```
+
+* 上述的这种方式，我们是修改了事务的自动提交行为 , 把默认的自动提交修改为了手动提交 , 此时我们执行的DML语句都不会提交 , 需要手动的执行commit进行提交。
+
+* 每条单独的DQL语句都是一个事务。
+
+#### 2.2 第一种操作方式
+
+```sql
+--开启事务
+START TRANSACTION 或 BEGIN ;
+--提交以及回滚与第一种相同
+```
+
+### 3.事务四大特性（ACID）
+
+- **原子性**（Atomicity）：事务是不可分割的最小操作单元，要么全部成功，要么全部失败。
+
+- **一致性**（Consistency）：事务完成时，必须使所有的数据都保持一致状态。（如张三李四账户一共有四千块，在事务结束后，一共的数据还是四千块，如果一共为三千，则出现了不一致）
+
+- **隔离性**（Isolation）：数据库系统提供的隔离机制，保证事务在不受外部并发操作影响的独立环境下运行。（两个并发事务不会互相影响）
+
+- **持久性**（Durability）：事务一旦提交或回滚，它对数据库中的数据的改变就是永久的。 （数据存储到磁盘中）
+  
+
+### 4. 并发事务问题
+
+#### 1.赃读:
+
+一个事务读到另外一个事务**还没有提交**的数据。
+
+![209b4fcfc9bca89401af8b46e6d80368](/images/postimage/MySQL/209b4fcfc9bca89401af8b46e6d80368.png)
+
+#### 2.不可重复读：
+
+一个事务先后读取同一条记录，但两次读取的数据不同，称之为不可重复读。
+
+事务A两次读取同一条记录，但是读取到的数据却是不一样的。（此时另一个事务提交了数据，导致两次读取结果不一致，但是在此隔离级别下，不会读到另一个事务还未提交的数据。）
+![a201a2542957f7b998eb4a9d1305d155](/images/postimage/MySQL/a201a2542957f7b998eb4a9d1305d155.png)
+
+#### 3.幻读:
+
+一个事务按照条件查询数据时，没有对应的数据行，但是在插入数据时，又发现这行数据已经存在，好像出现了 "幻影"
+
+![221fd1b8ea8d7279a665234bbd63099d](/images/postimage/MySQL/221fd1b8ea8d7279a665234bbd63099d.png)
+
+### 5.事务隔离级别
+
+- Read uncommitted 读未提交：事务一会读取到事务二未提交的数据。比如事务一第一次读取id=1的数据，此时事务二修改了id=1的数据但未提交，这时候事务一能读取到未提交的修改后的数据，即脏读错误。
+
+- Read committed 读已提交：事务一不会读取到事务二未提交的数据，但是会读取到事务二已提交的数据。同上例，事务二如果提交了对id=1的修改，则事务一会读取到修改后的结果，如果第一次读取的结果和第二次读取的结果不一致（事务二对其进行了修改），则出现不可重复读错误。
+
+- Repeatable Read(默认) 可重复读：事务一不会读取到事务二已提交的数据，每一个事务中的数据都是单独的，只有事务提交后再开启事务才会读到新的数据。同上例，如果事务一先读取id=1的数据，假设id=1不存在，则读取为空，此时如果事务二修改了id=1的数据，并提交，事务一再插入id=1的数据，则会报错，因为数据库中存在id=1的数据，但是事务一再查询id=1的数据，查询依然为空，因为在这个权限下，每一个事务内的数据只有开启事务时的数据。这个错误称为幻读。
+
+- Serializable 串行化：不会出现幻读现象，在权限下，事务只能一个接一个进行，只有上一个事务提交了，下一个事务才能提交。
+  
+
+```sql
+SELECT @@TRANSACTION ISOLATION;
+
+--设置隔离级别
+--session是该窗口
+--global是全局
+SET [ SESSION | GLOBAL ] TRANSACTION ISOLATION LEVEL { READ UNCOMMITTED |READ COMMITTED | REPEATABLE READ | SERIALIZABLE }
+```
+
+* 注意：事务隔离级别越高，数据越安全，但是性能越低。
