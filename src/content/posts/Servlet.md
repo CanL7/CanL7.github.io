@@ -1,16 +1,15 @@
 ---
-title: Servlet
-published: 2026-03-31
-description: '初入门'
-image: '/images/sagiri/12.png'
-tags: [java,Servlet]
-category: 'java'
+title: Servlet  
+published: 2026-03-31  
+description: 'javaweb入门必学之Servlet'  
+image: '/images/sagiri/12.png'  
+tags: [java,Servlet]  
+category: 'java'  
 draft: false 
 lang: ''
 ---
 
-
-# Servlet入门
+# Servlet
 
 ## 1.Http
 
@@ -244,17 +243,17 @@ response.sendRedirect("s05");
 ### 5.4 请求转发与重定向区别
 
 | 请求转发（`req.getRequestDispatcher().forward()`） | 重定向（`resp.sendRedirect()`） |
-| -------------------------------------------- |----------------------------|
+| -------------------------------------------- | -------------------------- |
 | 一次请求，数据在 request 域中共享                        | 两次请求，request 域中数据不共享       |
 | 服务器端行为                                       | 客户端行为                      |
 | 地址栏不发生变化                                     | 地址栏发生变化                    |
-| 绝对地址定位到站点后                                   | 绝对地址可写到 http://后           |
+| 绝对地址定位到站点后                                   | 绝对地址可写到 http://://         |
 
 
 
 ## 6.Cookie对象
 
-        Cookie是浏览器提供的一种技术，通过服务器的程序能将一些只须保存在客户端，或者在客户端进行处理的数据，放在本地的计算机上，不需要通过网络传输，因而提高网页处理的效率，并且能够减少服务器的负载，但是由于Cookie是服务器端保存在客户端的信息，所以其安全性也是很差的。例如常见的记住密码则可以通过Cookie来实现有一个专门操作Cookie的类javax.servlet.http.Cookie 随着服务器端的响应发送给客户端，保存在浏览器。当下次再访问服务器时把Cookie再带回服务器。
+        Cookie是浏览器提供的一种技术，通过服务器的程序能将一些只须保存在客户端，或者在客户端进行处理的数据，放在本地的计算机上，不需要通过网络传输，因而提高网页处理的效率，并且能够减少服务器的负载，但是由于Cookie是服务器端保存在客户端的信息，所以其安全性也是很差的。例如常见的记住密码则可以通过Cookie来实现有一个专门操作Cookie的类j**avax.servlet.http.Cookie。**随着服务器端的响应发送给客户端，保存在浏览器。当下次再访问服务器时把Cookie再带回服务器。
 
 ### 6.1 Cookie的创建和发送
 
@@ -402,6 +401,174 @@ String realPath = context.getRealPath("/");
 
 ## 9. 文件上传和下载
 
-还没学会!!!!!!!!! no~
+### 9.1 前台上传代码实现
+
+我们在web文件夹下新创一个upload.html文件
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传</title>
+</head>
+<body>
+
+<!--
+    文件上传
+        1.准备表单
+        2.设置表单的提交类型为PoST请求method="post"
+        3.设置表单类型为文件上传表单 enctype="multipart/form-data"
+        4.设置文件提交的地址
+        5.准备表单元素
+            1.普通的表单项 type="text"
+            2.文件项 type="file"
+        6.设置表单元素的name属性位(表单提交一定要设置表单元素的name属性值，否则后台无法接收数据!)
+-->
+    <form method="post" enctype="multipart/form-data" action="uploadServlet">
+        姓名:<input type="text" name="uname"> <br>
+        文件:<input type="file" name="myfile"> <br>
+        <!--button默认的类型是提交类型type="submit"-->
+        <button>提交</button>
+    </form>
+</body>
+</html>
+```
+
+### 9.2 上传后台实现
+
+使用注解 @MultipartConfig将一个Servlet 标识为支持文件上传。Servlet 将 multipart/form-data 的POST请求封装成**Part**，通过**Part**对上传的文件进行操作。
+
+```java
+@WebServlet("/uploadServlet")//与上面前台action对应
+@MultipartConfig
+public class UploadServlet extends HttpServlet {
+    @Override
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("uploading");
+        //设置编码格式
+        request.setCharacterEncoding("UTF-8");
+        //读取表单名字
+        String uname = request.getParameter("uname");
+        System.out.println("uname:"+uname);
+        //读取文件名字 用Part对象
+        Part part = request.getPart("myfile");
+        String fileName = part.getSubmittedFileName();
+        System.out.println("fileName:"+fileName);
+        //找路径
+        String path = request.getServletContext().getRealPath("/");
+        System.out.println("path:"+path);
+        //上传到指定路径
+        part.write(path + "/" + fileName);
+
+    }
+}
+```
+
+> 我们最后要访问这个页面是访问/upload.html不是/uploadServlet 
+
+### 9.3 超链接下载
+
+超链接下载
+    当使用超链接(a标签)时，如果遇到浏览器能够识别的资源，则会显示内容;如果遇到浏览器不能识别的资源，则会进行下载。
+
+download属性
+    通过download属性规定浏览器进行下载。
+download 属性可以不写任何信息，会自动使用默认文件名。如果设置了download属性的值，则使用设置的值做为文件名。
+
+
+
+```html
+<!-- 浏览器能够识别的资源-->
+<a hrf="download/test.txt">文本文件</a>
+<a href="download/test.png">图片文件</a>
+<!--浏览器不能识别的资源-->
+<a href="download/test.zip">压缩文件</a><hr>
+<a href="download/test.txt"download>文本文件</a>
+<a href="download/test.png"download ="Sagiri.png">图片文件</a>
+
+<!--浏览器不能识别的资源-->
+<a href="download/test.rar">压缩文件</a>
+<hr>
+href="download/test.txt">文本文件</a><adownload
+<a href="download/bd_logo1.png" download="百度.png">图片文件</a>
+```
+### 9.4 后台实现下载
+
+download.html 我们创建一个表单 并给一个text框来输入需要下载的文件名 
+
+placeholder是框框中的提示信息
+
+```html
+<form action="downloadServlet">
+        文件名<input type="text" name="fileName" placeholder="请输入要下载的文件名">
+        <button>下载</button>
+    </form>
+```
+
+来到downloadServlet文件
+
+```java
+@WebServlet("/downloadServlet")
+public class DownloadServlet extends HttpServlet {
+    @Override
+    protected void service(HttpServletRequest request, HttpServletResponse response) 
+throws ServletException, IOException {
+
+        System.out.println("downloading");
+        //设置编码格式
+        request.setCharacterEncoding("UTF-8");//请求编码
+        response.setContentType("text/html;charset=UTF-8");//响应编码
+        //获取参数
+        String fileName = request.getParameter("fileName");
+        //参数的非空判断
+        //trim():去除字符串的前后空格
+        if(fileName == null || fileName.trim().equals("")){
+            response.getWriter().write("请输入要下载的文件名");
+            response.getWriter().close();
+            return;
+        }
+
+        String filePath = request.getServletContext().getRealPath("/download/");
+        //通过路径来得到file
+        File file = new File(filePath + fileName);
+        //判断file文件是否为标准文件
+        if(file.exists() && file.isFile()){
+            //设置相应类型 ContentType
+            response.setContentType("application/octet-stream");
+            //设置响应头 固定格式 改最后一个参数就行
+            response.setHeader("Content-Disposition", "attachment; filename=" + fileName);
+            //获取输入输出流
+            InputStream inputStream = new FileInputStream(file);
+            //ServletOutputStream返回请求至浏览器
+            ServletOutputStream outputStream = response.getOutputStream();
+            //标准读取流程
+            byte bytes[] = new byte[1024];
+            int len;
+            while((len = inputStream.read(bytes)) != -1){
+                outputStream.write(bytes,0,len);
+            }
+            //先开后关
+            outputStream.close();
+            inputStream.close();
+        }
+        //不符合条件
+        else{
+            response.getWriter().write("文件不存在 请重试");
+            response.getWriter().close();
+        }
+    }
+}
+```
+
+**至此** **已学完Servlet所有课程**
+
+###### 杂谈
+下午开完会后再进行Spring框架的学习 预计1号学习完毕 算法就算了不学了
+时间有限 算法学习还是挺耗时间的 打比赛啥的就算了 现在所有公司都在找啥ai智能应用开发 
+aiagent这块现在是所有想从事后端开发的人员必须学的了 挺加分的 要是能独立写出个Rag项目就很牛逼了
+预计4月10号开始学习 我想着外卖写了就去学 腾讯那边的比赛正好需要学习相关内容 说python java golang都可以写
+我感觉我就用java写得了... 还有 计算机协会能不能让我进 求你了 吃饭去了好饿.. 
+2026.3.31 12.21
 
 
