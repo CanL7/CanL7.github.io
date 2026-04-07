@@ -742,7 +742,7 @@ class Spring01ApplicationTests {
 
 ## 2. Spring-AOP
 
-#### 2.1 AOP与OOP
+### 2.1 AOP与OOP
 
 - AOP Aspect Oriented Programming 面向切面
 
@@ -752,7 +752,7 @@ class Spring01ApplicationTests {
 
     AOP会有日志的生成 以后写项目运行肯定是看日志来改代码 而OOP一般没有
 
-#### 2.2 日志的生成
+### 2.2 日志的生成
 
 生成日志有以下三种方法
 
@@ -762,7 +762,7 @@ class Spring01ApplicationTests {
 
 3. **动态代理** 我们重点说明动态代理
 
-#### 2.3 动态代理
+### 2.3 动态代理
 
     静态代理,每包裹一个组件就需要写一个对应的方法, 很不方便
 
@@ -839,11 +839,11 @@ public class MathTest {
 
 -->
 
-#### 2.4 AOP专业术语
+### 2.4 AOP专业术语
 
 ![](file:///C:/Users/Sagiri/mizuki/public/images/postimage/SSM/3.png)
 
-#### 2.5 AOP实现
+### 2.5 AOP实现
 
 1. 先引入AOP依赖 (高版本还没有)
 
@@ -905,7 +905,7 @@ public class LogAspect {
    
    
 
-#### 2.6 AOP的底层原理
+### 2.6 AOP的底层原理
 
 1. Spring会为每个被切面切入的组件创建**代理对象**(Spring CGLIB创建的 无需接口 )
 
@@ -913,7 +913,7 @@ public class LogAspect {
 
 3. 目标方法执行时，会先去执行**增强器链**中拿到需要提前执行的**通知方法**去执行。
 
-#### 2.7 JoinPoint && @Pointcut && Signiture
+### 2.7 JoinPoint && @Pointcut && Signiture
 
 joinpoint 即连接点 我们可以通过传递连接点 通过链接点来获取想要的东西
 
@@ -970,7 +970,7 @@ joinpoint 即连接点 我们可以通过传递连接点 通过链接点来获�
 
 
 
-#### 2.8 多切面的执行顺序
+### 2.8 多切面的执行顺序
 
 切面的执行顺序可以看成一个包裹的顺序 从外层到内层 一层一层执行
 
@@ -978,7 +978,7 @@ joinpoint 即连接点 我们可以通过传递连接点 通过链接点来获�
 
 ![](file:///C:/Users/Sagiri/mizuki/public/images/postimage/SSM/4.png)
 
-#### 2.9 环绕通知
+### 2.9 环绕通知
 
 @Before @After @AfterReturning @AfterThrowing 这些只是通知方法,不能改变目标方法的参数和内容等,只是管理了代理方法
 
