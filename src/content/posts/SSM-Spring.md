@@ -20,8 +20,8 @@ lang: ''
 
 在 Spring 中，**对象的创建、管理、依赖注入、销毁**全部交给 Spring 容器统一处理，我们不再手动创建对象。
 
-:::tip 核心定义
-
+:::tip 
+核心定义
 IOC 是一种设计思想：**把对象的控制权从代码反转给 Spring 容器**。
 
 DI（依赖注入）是 IOC 思想的具体实现方式。
@@ -46,7 +46,8 @@ ConfigurableApplicationContext ioc = SpringApplication.run(主启动类.class, a
 
 - 容器启动 → Bean 初始化 → 容器关闭 → Bean 销毁
 
-:::warning 关键区别
+:::warning 
+关键区别
 
 Servlet：服务器管理 Servlet 实例（单例）
 
@@ -72,7 +73,8 @@ src/main/java/你的项目根包
 └── 主启动类       // Spring 项目入口，容器启动类
 ```
 
-:::caution 强制规则
+:::caution 
+强制规则
 
 如果组件不在主启动类的包/子包下，Spring 无法扫描，**不会注册为 Bean**
 
@@ -111,7 +113,8 @@ public class UserDao { }
 public class Car { }
 ```
 
-:::note 拓展说明
+:::note 
+拓展说明
 
 四大分层注解本质都是 @Component，只是语义不同，方便开发者区分业务层！
 
@@ -159,7 +162,8 @@ public class AppConfig {
 }
 ```
 
-:::important 核心要点
+:::important 
+核心要点
 
 配置类本身也是一个 Bean，会被 Spring 容器自动管理；@Bean 方法支持自定义 Bean 名称！
 
@@ -198,7 +202,8 @@ Map<String, Person> personMap = ioc.getBeansOfType(Person.class);
 Person person = ioc.getBean("zhangsan", Person.class);
 ```
 
-:::caution 高频报错
+:::caution 
+高频报错
 
 1. 容器中无此 Bean → NoSuchBeanDefinitionException
 
@@ -226,7 +231,8 @@ Person person = ioc.getBean("zhangsan", Person.class);
 public class Dog { }
 ```
 
-:::tip 单例 vs 多例
+:::tip 
+单例 vs 多例
 
 - 单例：bean1 == bean2 → true
 
@@ -255,7 +261,8 @@ public Person lazyPerson(){
 }
 ```
 
-:::warning 使用场景
+:::warning 
+使用场景
 
 项目启动慢、Bean 初始化逻辑复杂时，优先使用懒加载；高频使用的 Bean 不建议加！
 
@@ -306,7 +313,8 @@ public class CarFactory implements FactoryBean<Car> {
 }
 ```
 
-:::important 核心规则
+:::important 
+核心规则
 
 工厂本身是 Bean，但容器中**最终存储的是泛型对象（Car）**
 
@@ -362,7 +370,8 @@ ConfigurableEnvironment env = ioc.getEnvironment();
 String os = env.getProperty("os.name");
 ```
 
-:::note 拓展
+:::note 
+拓展
 
 Spring 提供内置条件注解，无需自定义类：
 
