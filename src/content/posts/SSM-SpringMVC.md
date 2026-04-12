@@ -292,54 +292,54 @@ API是web应用暴露出来的,让别人访问的请求路径,访问之后就可
 然后我们完成了一个Restful的员工管理系统(CRUD)
 
 完整的文件目录:
-
-> org.springdata.spring.rest.crud
-> ├── advice ->全局异常处理
-> │   └── GlobalExceptionHandler
-> ├── annotation ->自定义注解
-> │   └── @Gender -> 自定义校验性别注解
-> ├── bean 
-> │   └── Employee ->员工类
-> ├── common 
-> │   └── R -> 统一返回类型 code,msg,data
-> ├── config -> 配置
-> │   └── MySpringMVCConfig -> 拦截器配置文件
-> ├── controller 
-> │   ├── EmployeeRestController -> CRUD控制层 控制service
-> │   ├── HahaController
-> │   └── HelloController
-> ├── dao -> 主要逻辑处 与数据库交涉层
-> │   ├── impl
-> │   └── EmployeeDao
-> ├── exception -> 异常包
-> │   ├── BizException ->业务异常类
-> │   └── BizExceptionEnum -> 业务异常枚举类 enum
-> ├── filter ->没学
-> ├── interceptor -> 拦截器
-> │   ├── MyHandlerInterceptor0
-> │   ├── MyHandlerInterceptor1
-> │   └── MyHandlerInterceptor2
-> ├── service -> 服务层 包装了Dao
-> │   ├── impl
-> │   └── EmployeeService
-> ├── validator -> 自定义检验
-> │   └── GenderValidator
-> ├── vo -> 视图对象 与客户端交互对象
-> │   ├── req -> 请求
-> │   │   ├── EmployeeAddVo
-> │   │   └── EmployeeUpdateVo
-> │   └── resp -> 响应
-> │       └── EmployRespVo
-> └── Springmvc02BestPracticeApplication
-> 
-> resources ->资源包
-> ├── static
-> ├── templates
-> ├── application.properties
-> ├── application.yaml -> 配置swagger部分 knife4j
-> └── 资源包 'messages' -> 校验错误信息
->     └── messages.properties
-
+```
+ ├── org.springdata.spring.rest.crud
+ ├── advice ->全局异常处理
+ │   └── GlobalExceptionHandler
+ ├── annotation ->自定义注解
+ │   └── @Gender -> 自定义校验性别注解
+ ├── bean 
+ │   └── Employee ->员工类
+ ├── common 
+ │   └── R -> 统一返回类型 code,msg,data
+ ├── config -> 配置
+ │   └── MySpringMVCConfig -> 拦截器配置文件
+ ├── controller 
+ │   ├── EmployeeRestController -> CRUD控制层 控制service
+ │   ├── HahaController
+ │   └── HelloController
+ ├── dao -> 主要逻辑处 与数据库交涉层
+ │   ├── impl
+ │   └── EmployeeDao
+ ├── exception -> 异常包
+ │   ├── BizException ->业务异常类
+ │   └── BizExceptionEnum -> 业务异常枚举类 enum
+ ├── filter ->没学
+ ├── interceptor -> 拦截器
+ │   ├── MyHandlerInterceptor0
+ │   ├── MyHandlerInterceptor1
+ │   └── MyHandlerInterceptor2
+ ├── service -> 服务层 包装了Dao
+ │   ├── impl
+ │   └── EmployeeService
+ ├── validator -> 自定义检验
+ │   └── GenderValidator
+ ├── vo -> 视图对象 与客户端交互对象
+ │   ├── req -> 请求
+ │   │   ├── EmployeeAddVo
+ │   │   └── EmployeeUpdateVo
+ │   └── resp -> 响应
+ │       └── EmployRespVo
+ └── Springmvc02BestPracticeApplication
+ 
+ resources ->资源包
+ ├── static
+ ├── templates
+ ├── application.properties
+ ├── application.yaml -> 配置swagger部分 knife4j
+ └── 资源包 'messages' -> 校验错误信息
+     └── messages.properties
+```
 代码篇幅过长 这里我们重点讲解重要部分 源码去本地看 每个部分都有重要的注释
 
 #### 1. Dao / Service / Controller 层
