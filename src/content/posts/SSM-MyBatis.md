@@ -1,3 +1,13 @@
+---
+title: SSM-MyBatis
+published: 2026-04-27
+description: 'SSM-MyBatis'
+image: '/images/sagiri/15.png'
+tags: [java,MyBatis,SSM]
+category: 'java'
+draft: false 
+lang: ''
+---
 # MyBatis
 
 ## 1.初认识
