@@ -43,7 +43,7 @@ Springboot可以简化项目的开发,直接建项目,就可以运行,简化了�
 
 在生命周期里也有很多简化的方法,比如打包,清理target包等
 
-![image-20241212002324748](img\image-20241212002324748.png)
+![image-20241212002324748](img/image-20241212002324748.png)
 
 项目的jar包导出之后,直接进入cmd窗口 java jar app.jar(app是自定义的包名) 就可以启动服务器
 
@@ -53,7 +53,7 @@ Springboot可以简化项目的开发,直接建项目,就可以运行,简化了�
 
 创建项目的时候一顿打钩,就会将相应场景需要的批量的jar包导入到pom配置文件中
 
-![image-20241212003515882](img\image-20241212003515882.png)
+![image-20241212003515882](img/image-20241212003515882.png)
 
 官方提供的场景：命名为：spring-boot-starter-*
 
@@ -91,7 +91,7 @@ p177 底层的springboot导入原理
 
 自动配置类把组件配置到容器中,把属性类和配置文件进行了绑定, 并且把组件要用的所有属性放到了容器中
 
-![image-20241215160449575](img\image-20241215160449575.png)
+![image-20241215160449575](img/image-20241215160449575.png)
 
 # 2.基础功能
 
@@ -382,7 +382,7 @@ p190, 引入自己的配置文件.springboot也有配置文件,以自己引入�
 
 ### 切换日志实现
 
-<img src="img\image-20241213104959372.png" alt="image-20241213104959372" style="zoom:67%;" />
+<img src="img/image-20241213104959372.png" alt="image-20241213104959372" style="zoom:67%;" />
 
 通过以上配置,可以切换成log4j2日志配置, 用exclusion排除掉了默认的日志文件,此时就变成了log4j2的日志了
 
@@ -455,7 +455,7 @@ p190, 引入自己的配置文件.springboot也有配置文件,以自己引入�
 String name;
 ```
 
-<img src="img\image-20241213195440712.png" alt="image-20241213195440712" style="zoom:60%;" />
+<img src="img/image-20241213195440712.png" alt="image-20241213195440712" style="zoom:60%;" />
 
 将项目打包后,在项目平级的位置建一个application.properties文件,在里面打hello.msg= h, 项目启动以此文件的配置为准
 
@@ -536,7 +536,7 @@ SpringBoot 提供了 actuator 模块，可以快速暴露应用的所有指标
 
 导入： spring-boot-starter-actuator
 
-<img src="img\image-20241215154223786.png" alt="image-20241215154223786" style="zoom:63%;" />
+<img src="img/image-20241215154223786.png" alt="image-20241215154223786" style="zoom:63%;" />
 
 配置文件暴漏全部的指标
 
@@ -653,11 +653,11 @@ public class UserRegisterListener {
 
 ## 自动配置原理(熟悉)
 
-![image-20241215160634567](img\image-20241215160634567.png)
+![image-20241215160634567](img/image-20241215160634567.png)
 
 springboot 完整项目启动流程
 
-![image-20241215160848587](img\image-20241215160848587.png)
+![image-20241215160848587](img/image-20241215160848587.png)
 
 ## 有用的源码,有时间要掌握(面试要用)
 
